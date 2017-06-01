@@ -26,8 +26,8 @@ github_username: RandallDavis
 
 # Build settings
 markdown: kramdown
-theme: minima
-#theme: jekyll-theme-midnight
+#theme: minima
+theme: jekyll-theme-midnight
 gems:
   - jekyll-feed
 exclude:
