@@ -3,6 +3,7 @@ layout: post
 title:  "Inversion of Control in F#"
 date:   2016-06-16 11:00:00 -0400
 categories: f# IoC
+comments: true
 ---
 I wrote a post on Jet.com's tech blog about Inversion of Control in F#.
 

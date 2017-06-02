@@ -3,6 +3,7 @@ layout: post
 title:  "Microservice Edge Testing"
 date:   2017-06-05 11:00:00 -0400
 categories: microservice testing
+comments: true
 ---
 # Introduction
 
