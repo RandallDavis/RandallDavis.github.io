@@ -79,7 +79,7 @@ One thing that our intelligent fake is not going to provide is anything relating
 
 However, the whole point of our fake is to let the client experience the host's behaviors in isolation. Some of those behaviors will only be triggered if the host is experiencing duress or a weakness in a dependency, whether that dependency be another microservice or an infrastructure resource. In some cases, the host might time out or provide garbled responses. Known behaviors are worth expressing in the fake, but we might have to get a little clever about how or when to simulate them.
 
-The real trick here is that the client will need a way to ask the host's fake to express these behaviors. Since that part of the client's communication to the host's edge would never exist in Production, it's not going to fit naturally into the host's contract. That's okay. Let's just know that up front and keep things organized. The fake's contract is going to end up being an extension of the host's contract to provide additional testing-related capabilities.
+The real trick here is that the client will need a way to ask the host's fake to express these behaviors. Since that part of the client's communication to the host's edge would never exist in Production, it's not going to fit naturally into the host's contract. That's okay. Let's just know that up front and keep things organized. The fake's contract is going to end up being an extension of the host's contract that provides additional testing-related capabilities.
 
 # Conclusion
 
