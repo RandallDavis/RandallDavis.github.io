@@ -7,7 +7,7 @@ comments:   true
 ---
 # Introduction
 
-This is a manifesto on how I think microservice interconnectivity layers (AKA edges) should be tested. The main focus is to state a glaring blind spot that currently exists in microservice edge testing and propose a solution, but this leads into other implications / considerations. Some of this relates to what I've seen and directly put into practice, but the purpose of this work is to push beyond my experiences and delve into exploratory territory. Ideally, this will surface some better practices that will improve the landscape of microservice architectures.
+This is a proposal on how I think microservice interconnectivity layers (AKA edges) should be tested. The main focus is to present a glaring blind spot that currently exists in microservice edge testing and propose a solution, but this leads into other implications / considerations. Some of this relates to what I've seen and directly put into practice, but the purpose of this work is to push beyond my experiences and delve into exploratory territory. Ideally, this will surface some better practices that will improve the landscape of microservice architectures.
 
 # Background
 
