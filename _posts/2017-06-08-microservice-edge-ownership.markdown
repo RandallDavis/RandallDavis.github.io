@@ -21,7 +21,7 @@ If you dig deeper into the contract testing and the recommendations around it, y
 * Be the more dominant owner of the contract that the provider exposes to the consumer.
 * Build its own fake of the provider's edge by recording real provider responses.
 
-This ultimately leads into a relationship microservices where the consumer is king. On the surface, this feels very attractive, leading to the following benefits:
+This ultimately leads into a relationship between microservices where the consumer is king. On the surface, this feels very attractive, leading to the following benefits:
 * The consumer can adopt this pattern for any dependency without cooperation. This can be used for both provider microservices that don't provide intelligent fakes, as well as external services (such as 3rd party APIs).
 * The consumer can express its needs which serve as requirements for creating provider capabilities.
 * Any provider capability that is dropped from the consumer's contract indicates to the provider that it can be deprecated (at least for that one consumer).
