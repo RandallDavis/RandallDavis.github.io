@@ -5,6 +5,8 @@ date:       2017-06-08 11:00:00 -0400
 categories: microservice testing edge
 comments:   true
 ---
+## Introduction
+
 I recently wrote a **[proposal on microservice edge testing][microservice-edge-testing-post]**, which elicited a bit of direct interest and feedback. This is an ongoing and active exploration, but one question from [Daniel Bergey][daniel-bergey] really got me thinking.
 
 To quote Daniel:
@@ -21,20 +23,28 @@ If you dig deeper into the contract testing and the recommendations around it, y
 
 This ultimately leads into a relationship microservices where the consumer is king. On the surface, this feels very attractive, leading to the following benefits:
 * The consumer can adopt this pattern for any dependency without cooperation. This can be used for both provider microservices that don't provide intelligent fakes, as well as external services (such as 3rd party APIs).
-* The consumer is able to express its needs which serve as requirements for creating provider capabilities.
+* The consumer can express its needs which serve as requirements for creating provider capabilities.
 * Any provider capability that is dropped from the consumer's contract indicates to the provider that it can be deprecated (at least for that one consumer).
 
 ## Contract Testing Cons
 
 There are some benefits there, and I like the fact that this can be done for immature provider microservices that aren't providing good fakes. However, from a testing perspective, it seems pretty flimsy.
 
-My first issue with this is that **the "tested behavior" is going to reflect what the consumer wants, rather than the provider's actual behavior**. I love that this approach clarifies the consumer needs, so that the provider can focus on building useful functionality that will actually be used, but the greatest benefit here is in clarifying what features get built into the provider. Our intent in testing is not to defend "what should have been built", but to defend "what might actually happen in Production". Our tested behavior needs to focus on the actual provider behaviors and how they relate to the consumer. The provider knows what can go wrong in Production, and needs to drive these concerns forward in testing.
+### Testing a Specification
+
+My first issue with this is that **what the consumer wants is being tested, rather than the provider's actual behavior**. All that's really being tested here is that the specification that the consumer provided has been implemented in the provider. I love that this approach clarifies the consumer needs, so that the provider can focus on building useful functionality that will actually be used, but the greatest benefit here is in clarifying what features get built into the provider. Our intent in testing is not to defend "what should have been built", but to defend "what might actually happen in Production". Our tested behavior needs to focus on the actual provider behaviors and how they relate to the consumer. The provider knows what can go wrong in Production, and needs to drive these concerns forward in testing.
+
+### Reliance on Snapshots
 
 My second concern is that **snapshots of provider responses are insanely naive**. When I asked you what you had for breakfast today, you said "cereal", therefore you will always answer that way perpetually. Really? This makes huge assumptions about the criteria and processes that go into creating that response. This seems like a good way to defend against changing contracts / behaviors, but there are more mature ways to handle change management.
 
+### Contract Proliferation
+
 If consumers are driving contract definitions, it means that we are going to have **a lot of contracts floating around that are largely redundant**. I actually have mixed feelings about this one, because I'm not against the idea of having contracts that are explicitly catered to individual consumers. The provider is ideally going to be capable of deduping things behind the scenes to aim toward simplicity and reuse. The danger here is if each contract is so custom that the provider has a hard time keeping things simple internally. Let's not consider this one a negative, but just semi-dangerous territory unless properly managed.
 
-The primary gripe that my proposal focuses on isn't addressed by this consumer-centric approach. The consumer doesn't understand the depth of what can go wrong with the provider, so traditional consumer-driven testing is **only going to exercise vanilla interactions between the consumer and the provider**. This leaves us with a false sense of security. I'm not going to dig deeply into this one, because my proposal covers this in depth.
+### Dumbed Down to Consumer Perspective
+
+The primary gripe that my proposal focuses on isn't addressed by this consumer-centric approach. The consumer doesn't understand the depth of what can go wrong with the provider, so traditional consumer-driven testing is **only going to exercise vanilla interactions between the consumer and the provider**. This leaves us with a false sense of security. I'm not going to dig into this one here, because my proposal covers this in depth.
 
 ## Contract Ownership
 
