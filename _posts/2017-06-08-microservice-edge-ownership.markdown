@@ -12,14 +12,14 @@ I recently wrote a **[proposal on microservice edge testing][microservice-edge-t
 To quote Daniel:
 > How does this compare to contract testing?  I think they are dual solutions to the same problem - host team provides a fake to the client teams, vs. client teams provide test cases to the host team.
 
-I wasn't previously familiar with [contract testing][contract-testing], and am delighted to learn about its existence. It does, in fact, seek to address the problem that my proposal also seeks to address, but there are a few fundamental differences in the approach. Note that I have no practical experience or expertise (or even a deep knowledge) of contract testing - this post reflects my gut response exploration of the subject.
+I wasn't previously familiar with [contract testing][contract-testing], and am delighted to learn about its existence. It does, in fact, seek to address the problem that my proposal also seeks to address, but there are a few fundamental differences in the approach. Note that I have no practical experience or expertise (or even a deep knowledge) in contract testing - this post reflects my gut response exploration of the subject.
 
 ## Contract Testing Pros
 
 If you dig deeper into the contract testing and the recommendations around it, you'll quickly find [consumer driven contracts][consumer-driven-contracts] and [self initializing fakes][self-initializing-fakes]. Piecing all of this together, we're led into a paradigm where the consumer microservice is able to:
 * Express its needs to the provider microservice.
 * Be the more dominant owner of the contract that the provider exposes to the consumer.
-* Build its own fake of provider responses by recording real provider responses.
+* Build its own fake of the provider's edge by recording real provider responses.
 
 This ultimately leads into a relationship microservices where the consumer is king. On the surface, this feels very attractive, leading to the following benefits:
 * The consumer can adopt this pattern for any dependency without cooperation. This can be used for both provider microservices that don't provide intelligent fakes, as well as external services (such as 3rd party APIs).
