@@ -40,17 +40,15 @@ The primary gripe that my proposal focuses on isn't addressed by this consumer-c
 
 Let's now put on our philosophy hats.
 
-While I don't like this approach from a testing perspective, for the reasons mentioned above, this gets into something much bigger. **_Who owns the contract between the consumer and provider?_**
+While I don't like this approach from a testing perspective for the reasons mentioned above, this gets into something much bigger. **_Who owns the contract between the consumer and provider?_**
 
-The consumer-dominant model is good for defining the purpose of the provider. The provider is only as useful as the value it's serving up to its consumers. Understanding what the consumers actually need is huge in keeping the provider's functionality focused. As I alluded to earlier, this is really useful when the provider is being built. It's also valuable in keeping the provider's ongoing evolution in check, but in my opinion, once the provider is created and starts to take on a life of its own, the consumer-centric model gets in the way.
+The consumer-dominant model is good for defining the purpose of the provider. The provider is only as useful as the value it's serving up to its consumers. Understanding what the consumers actually need is huge in keeping the provider's functionality focused. As I alluded to earlier, this is primarily useful when the provider is being built. It's also valuable in keeping the provider's ongoing evolution in check, but in my opinion, once the provider is created and starts to take on a life of its own, the consumer-centric model gets in the way.
 
 The provider's development lifecycle probably isn't going to end as soon as it's created. Those initial consumer-centric requirements are going to look more and more naive and distant from the perspective that is required to make the provider better at what it does. Also, each consumer is coming from a different perspective, so taking marching orders from these diverse mindsets gets harder to manage. This is especially true if the provider is doing its function really well - it's likely to get more and more consumers, which means more and more sets of instructions on what is expected of it.
 
 I don't think this model works. Generally what I see in microservice architectures is that each microservice owns a domain or function. The microservice exists because it's expected to do something really well so that no other microservices have to concern themselves with it. The microservice is expected to be excellent at what it owns - it gains expertise.
 
-If the provider microservice is the expert of its function, it should be driving the understanding and communication of that function to anything that interacts with it. The contract between the consumer and the provider needs to reflect the perspective of the expert in the relationship - the provider.
-
-
+If the provider microservice is the expert of its function, it should be driving the understanding and communication of that function to anything that interacts with it. The contract between the consumer and the provider needs to reflect the perspective of the expert in the relationship - the provider. I have a big hunch that if done right, and if providers are really doing their job well, the overall microservice ecosystem is going to get closer and closer to reflecting the truth of what's happening, rather than arbitrary intent in microservice interactions.
 
 [microservice-edge-testing-post]: https://randalldavis.github.io/microservice/testing/2017/06/05/microservice-edges.html
 [daniel-bergey]: http://github.com/bergey
