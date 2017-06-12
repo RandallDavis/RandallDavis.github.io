@@ -29,7 +29,33 @@ What makes edge testing difficult is that the way that we operate, there's no na
 There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments, but in each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
 
-## Solution Requirements
+## Solution
+
+My proposal dives into a solution in more depth, but let me cover the basics here.
+
+What we're trying to accomplish is that there is thorough testing of the behaviors between a "consumer microservice" interacting with a "provider microservice". In this, we want the expertise of both teams to affect our testing. We also want to create maturity in our process such that this practice is ingrained in the way we work - we want to be able to depend on the accuracy of these tests.
+
+How do we accomplish it? **The provider microservice edge should ship along with an intelligent fake that expresses that edge's behaviors. The consumer microservice then has unit tests to exercise its non-vanilla interactions with the provider's edge.** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in ther consumer microservice's unit tests.
+
+### Provider Edge Fake
+
+Since the fake of the provider microservice's edge will be used in unit testing, it must meet the following criteria:
+* It should be fast and light-weight.
+* It should have no external dependencies.
+* Its use can be fully parallelizable without shared state or competing for resources.
+
+### Provider Edge Testing
+
+
+
+
+### Consumer Edge Testing
+
+
+
+
+
+
 
 ## Architectural Basics
 ### different types of microservice architectures
