@@ -46,6 +46,9 @@ Since the fake of the provider microservice's edge will be used in unit testing,
 
 ### Provider Edge Testing
 
+To make sure that the fake stays up to date, the provider microservice's needs its own unit tests to validate its behavior. By making it a core part of the provider's code lifecycle, it's going to stay in great shape. Basically, we want to test the provider edge's real behavior and compare it to the fake's behavior.
+
+
 
 
 
@@ -53,16 +56,11 @@ Since the fake of the provider microservice's edge will be used in unit testing,
 
 
 
+### Testing-specific Capabilities
 
 
 
 
-## Architectural Basics
-### different types of microservice architectures
-### different types of microservice edge communications
-### microservice edge best practices
-
-## Solution Design
 
 [microservice-edge-testing]: https://randalldavis.github.io/microservice/testing/2017/06/05/microservice-edges.html
 [microservice-edge-ownership]: https://randalldavis.github.io/microservice/testing/edge/2017/06/08/microservice-edge-ownership.html
