@@ -19,14 +19,14 @@ There are some pretty common practices for testing microservices. These practice
 | Load testing | System-wide or individual microservice performance | Usually exercising live dependencies. | Focused on vanilla success code paths. |
 | QA | System-wide functionality | Usually focused on functionality visible to users and exercised manually. | Focused on vanilla success code paths. |
 
-The problem in this is that **_non-vanilla interactions between adjacent microservices are not being adequately tested_**. There are a few opportunities to do this (the best of which would be in integration testing), but in practice this rarely happens.
+The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
 What makes edge testing difficult is that the way that we operate, there's no natural place to handle them:
 * *Outside of unit testing, only simple behaviors are tested.* If you have more than one microservice, the focus quickly becomes on testing behaviors across many microservices. The focus is always on the big, important, and likely scenarios. Many scenarios are swept under the rug.
-* *Unit tests are focused on code unique to the microservice being tested.* Unit tests are focused on internal beahvior within a microservice. To accomplish this,b external dependencies are intentionally mocked out. This results in the understanding of any dependencies (including external microservice edges) being simplified.
+* *Unit tests are focused on code unique to the microservice being tested.* Unit tests are focused on internal beahvior within a microservice. To accomplish this, external dependencies are mocked out. This results in the understanding of any dependencies (including external microservice edges) being simplified.
 * *Tests are dumbed down to the understanding of a single team.* If we wanted to test the complex interactions between two microservices, experts on both microservices would need to define the tests. Quite simply, this isn't happening. Even if it was happening, it would be costly to upkeep, as microservices evolve at different rates - that expertise needs to address permutations of behavior across differing versions.
 
-There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments, but in each environment, either there is a decent amount of risk in Production or the process in getting code into Production is painful. I'd argue that many environments suffer both of these fates.
+There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments, but in each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
 
 ## Solution Requirements
