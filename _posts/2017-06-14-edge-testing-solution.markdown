@@ -7,7 +7,6 @@ comments:   true
 ---
 I recently wrote a **[proposal on microservice edge testing][microservice-edge-testing]** to state a blind spot in current testing practices and propose a solution. There has also been some [further exploration of the subject][microservice-edge-ownership]. In the proposal, I dig deep into the problem and attempt to keep things agnostic to any specific implementation or architecture. In this post, I'll focus more on the approach we're experimenting with at Jet.com.
 
-
 ## Problem
 
 There are some pretty common practices for testing microservices. These practices are largely common to non-microservice architectures, but microservices introduce some new complexities that push testing needs a little further.
@@ -28,12 +27,13 @@ What makes edge testing difficult is that the way that we operate, there's no na
 
 There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments, but in each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
-
 ## Solution
 
 My proposal dives into a solution in more depth, but let me cover the basics here.
 
 What we're trying to accomplish is that there is thorough testing of the behaviors between a "consumer microservice" interacting with a "provider microservice". In this, we want the expertise of both teams to affect our testing. We also want to create maturity in our process such that this practice is ingrained in the way we work - we want to be able to depend on the accuracy of these tests.
+
+**TODO: define fake**
 
 How do we accomplish it? **The provider microservice edge should ship along with an intelligent fake that expresses that edge's behaviors. The consumer microservice then has unit tests to exercise its non-vanilla interactions with the provider's edge.** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in ther consumer microservice's unit tests.
 
@@ -43,23 +43,30 @@ Since the fake of the provider microservice's edge will be used in unit testing,
 * It should be fast and light-weight.
 * It should have no external dependencies.
 * Its use can be fully parallelizable without shared state or competing for resources.
+* It needs to cover both synchronous (i.e. RESTful endpoints) and asynchronous (i.e. queues & pub/sub) interactions.
 
 ### Provider Edge Testing
 
-To make sure that the fake stays up to date, the provider microservice's needs its own unit tests to validate its behavior. By making it a core part of the provider's code lifecycle, it's going to stay in great shape. Basically, we want to test the provider edge's real behavior and compare it to the fake's behavior.
+<p align="center"><img src="/_assets/img/EdgeTesting%20-%20providerEdgeUnitTest.png" height="300"></p>
 
-
-
-
+To make sure that the fake stays up to date, the provider microservice's needs unit tests to validate it. Basically, we want to test the provider edge's real behavior and compare it to the fake's behavior. By making it a core part of the provider's code lifecycle, it's going to stay in great shape.
 
 ### Consumer Edge Testing
 
+<p align="center"><img src="/_assets/img/EdgeTesting%20-%20consumerUnitTest.png" height="350"></p>
 
+In the consumer's unit tests, instead of mocking out interactions with the provider's edge, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all of the "what if" scenarios that might happen when interacting with the provider.
 
-### Testing-specific Capabilities
+### Testing Commands
 
+In addition to the standard interactions with the provider's edge, the fake will have additional features that are unique to testing scenarios. Here are a few examples:
+* List behaviors that can be tested.
+* Pretend you have a dependency outage.
+* Pretend you're under heavy load.
 
+## Where We Go From Here
 
+Well, at Jet, we're going to take a stab at building this out and seeing how it works in practice. Stay tuned!
 
 
 [microservice-edge-testing]: https://randalldavis.github.io/microservice/testing/2017/06/05/microservice-edges.html
