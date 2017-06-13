@@ -20,22 +20,18 @@ There are some pretty common practices for testing microservices. These practice
 
 The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
-What makes edge testing difficult is that the way that we operate, there's no natural place to handle them:
-* *Outside of unit testing, only simple behaviors are tested.* If you have more than one microservice, the focus quickly becomes on testing behaviors across many microservices. The focus is always on the big, important, and likely scenarios. Many scenarios are swept under the rug.
-* *Unit tests are focused on code unique to the microservice being tested.* Unit tests are focused on internal beahvior within a microservice. To accomplish this, external dependencies are mocked out. This results in the understanding of any dependencies (including external microservice edges) being simplified.
-* *Tests are dumbed down to the understanding of a single team.* If we wanted to test the complex interactions between two microservices, experts on both microservices would need to define the tests. Quite simply, this isn't happening. Even if it was happening, it would be costly to upkeep, as microservices evolve at different rates - that expertise needs to address permutations of behavior across differing versions.
+### Why is this Happening?
 
-There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments, but in each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
+The main reason this happens is because the way that we're testing things, there's no natural place for these tests:
+* *Outside of unit testing, only simple behaviors are tested.* If you have more than one microservice, the focus quickly becomes on testing behaviors across many microservices. It's always about the big, important, and likely scenarios. Many scenarios are swept under the rug.
+* *Unit tests are focused on code unique to the microservice being tested.* Unit tests are focused on internal beahvior within a microservice. To accomplish this, external dependencies are mocked out. This results in the understanding of any dependencies (including external microservice edges) being simplified.
+* *Tests are dumbed down to the understanding of a single team.* If we wanted to test the complex interactions between two microservices, experts on both microservices would need to define the tests. Quite simply, this isn't happening. Even if it was happening, it would be costly to upkeep, as microservices evolve at different rates which would make things very complex operationally.
+
+There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments. In each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
 ## Solution
 
-My proposal dives into a solution in more depth, but let me cover the basics here.
-
-What we're trying to accomplish is that there is thorough testing of the behaviors between a "consumer microservice" interacting with a "provider microservice". In this, we want the expertise of both teams to affect our testing. We also want to create maturity in our process such that this practice is ingrained in the way we work - we want to be able to depend on the accuracy of these tests.
-
-**TODO: define fake**
-
-How do we accomplish it? **The provider microservice edge should ship along with an intelligent fake that expresses that edge's behaviors. The consumer microservice then has unit tests to exercise its non-vanilla interactions with the provider's edge.** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in ther consumer microservice's unit tests.
+**_The provider microservice edge should ship along with an intelligent fake that expresses that edge's behaviors. The consumer microservice then has unit tests to exercise its non-vanilla interactions with the provider's edge._** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in the consumer microservice's unit tests.
 
 ### Provider Edge Fake
 
