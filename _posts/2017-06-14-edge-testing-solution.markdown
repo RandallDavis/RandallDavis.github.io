@@ -31,7 +31,7 @@ There's a definite gap in our testing, and it happens to be in a very dangerous 
 
 ## Solution
 
-**_The provider microservice edge should ship along with an intelligent fake that expresses that edge's behaviors. The consumer microservice then has unit tests to exercise its non-vanilla interactions with the provider's edge._** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in the consumer microservice's unit tests.
+**_The provider microservice edge should ship along with an intelligent [fake][fake-definition] that expresses that edge's behaviors. The consumer microservice should use that fake to exercise its non-vanilla interactions with the provider._** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in the consumer microservice's unit tests.
 
 ### Provider Edge Fake
 
@@ -60,10 +60,10 @@ In addition to the standard interactions with the provider's edge, the fake will
 * Pretend you have a dependency outage.
 * Pretend you're under heavy load.
 
-## Where We Go From Here
+## What Next?
 
-Well, at Jet, we're going to take a stab at building this out and seeing how it works in practice. Stay tuned!
-
+Well, at Jet, we're going to take a stab at building this out and see how it works in practice. Stay tuned!
 
 [microservice-edge-testing]: https://randalldavis.github.io/microservice/testing/2017/06/05/microservice-edges.html
 [microservice-edge-ownership]: https://randalldavis.github.io/microservice/testing/edge/2017/06/08/microservice-edge-ownership.html
+[fake-definition]: https://stackoverflow.com/questions/346372/whats-the-difference-between-faking-mocking-and-stubbing
