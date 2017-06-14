@@ -44,7 +44,7 @@ To make sure that the fake stays up to date, the provider microservice needs uni
 
 <p align="center"><img src="https://raw.githubusercontent.com/RandallDavis/RandallDavis.github.io/master/_assets/img/EdgeTesting%20-%20providerEdgeUnitTest.png" height="300"></p>
 
-### Consumer Edge Testing
+### Consumer Testing
 
 In the consumer's unit tests, instead of mocking out interactions with the provider, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all the "what if" scenarios that might happen when interacting with the provider.
 
