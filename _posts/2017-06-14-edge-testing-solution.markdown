@@ -27,7 +27,7 @@ The main reason this happens is because there is no natural home for these tests
 * *Unit tests are focused on code unique to the microservice being tested.* Unit tests are focused on internal behavior within a microservice. To accomplish this, external dependencies are mocked out. This results in the understanding of any dependencies (including external microservice edges) being simplified.
 * *Tests are dumbed down to the understanding of a single team.* If we want to test the complex interactions between two microservices, experts on both microservices need to define the tests. Quite simply, this isn't happening. Even if it was happening, it would be costly to upkeep, as microservices evolve at different rates which would make things very complex operationally.
 
-There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments. In each environment there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
+There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments. In each environment, there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
 ## Solution
 
@@ -49,7 +49,7 @@ To make sure that the fake stays up to date, the provider microservice needs uni
 
 ### Consumer Edge Testing
 
-In the consumer's unit tests, instead of mocking out interactions with the provider, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all of the "what if" scenarios that might happen when interacting with the provider.
+In the consumer's unit tests, instead of mocking out interactions with the provider, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all the "what if" scenarios that might happen when interacting with the provider.
 
 <p align="center"><img src="/_assets/img/EdgeTesting%20-%20consumerUnitTest.png" height="350"></p>
 
