@@ -9,7 +9,7 @@ comments:   true
 
 I recently wrote a **[proposal on microservice edge testing][microservice-edge-testing]** to state a blind spot in current testing practices and propose a solution. There has also been some [further exploration of the subject][microservice-edge-ownership]. In the proposal, I dug deep into the problem and attempted to keep things agnostic to any specific implementation or architecture. In this post, I'll focus more on the approach we're experimenting with at Jet.com.
 
-# Problem
+## Problem
 
 There are some pretty common practices for testing microservices. These practices are largely used in non-microservice architectures, but microservices introduce some new complexities that push testing needs a little further.
 
@@ -17,7 +17,7 @@ There are some pretty common practices for testing microservices. These practice
 
 The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
-## Why Is This Happening?
+### Why Is This Happening?
 
 The main reason this happens is because there is no natural home for these tests in the current approach:
 * *Outside of unit testing, only simple behaviors are tested.* If you have more than one microservice, the focus quickly gravitates toward testing behaviors across many microservices. It's always about the big, important, and likely scenarios. Many scenarios are swept under the rug.
@@ -26,11 +26,11 @@ The main reason this happens is because there is no natural home for these tests
 
 There's a definite gap in our testing, and it happens to be in a very dangerous place. This is mitigated in different ways in different environments. In each environment, there is either a decent amount of risk in Production or the process of getting code into Production is painful. I'd argue that many environments suffer both of these fates.
 
-# Solution
+## Solution
 
 **_The provider microservice edge should ship along with an intelligent [fake][fake-definition] that expresses the provider's behaviors. The consumer microservice should use that fake to exercise its non-vanilla interactions with the provider._** There are a few other requirements to make this work, but the idea here is that the expertise of both systems is represented in the consumer microservice's unit tests.
 
-## Provider Fake
+### Provider Fake
 
 Since the fake of the provider microservice will be used in unit testing, it must meet the following criteria:
 * It should be fast and light-weight.
@@ -38,26 +38,26 @@ Since the fake of the provider microservice will be used in unit testing, it mus
 * Its use can be fully parallelizable without shared state or competing for resources.
 * It needs to cover both synchronous (i.e. RESTful endpoints) and asynchronous (i.e. queues & pub/sub) interactions.
 
-## Provider Edge Testing
+### Provider Edge Testing
 
 To make sure that the fake stays up to date, the provider microservice needs unit tests to validate it. Basically, we want to test the provider's real behavior and compare it to the fake's behavior. By making it a core part of the provider's code lifecycle, it's going to stay in great shape.
 
 <p align="center"><img src="https://raw.githubusercontent.com/RandallDavis/RandallDavis.github.io/master/_assets/img/EdgeTesting%20-%20providerEdgeUnitTest.png" height="300"></p>
 
-## Consumer Edge Testing
+### Consumer Edge Testing
 
 In the consumer's unit tests, instead of mocking out interactions with the provider, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all the "what if" scenarios that might happen when interacting with the provider.
 
 <p align="center"><img src="https://raw.githubusercontent.com/RandallDavis/RandallDavis.github.io/master/_assets/img/EdgeTesting%20-%20consumerUnitTest.png" height="350"></p>
 
-## Testing Commands
+### Testing Commands
 
 In addition to the standard interactions with the provider's edge, the fake will have additional features that are unique to testing scenarios. Here are a few examples:
 * List behaviors that can be tested.
 * Pretend you have a dependency outage.
 * Pretend you're under heavy load.
 
-# What's Next?
+## What's Next?
 
 Well, at Jet, we're going to take a stab at building this out and see how it works in practice. Stay tuned!
 
