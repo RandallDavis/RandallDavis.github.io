@@ -20,6 +20,7 @@ There are some pretty common practices for testing microservices. These practice
 | Load testing | System-wide or individual microservice performance | Less frequent runs, usually leverage live dependencies. | Focused on vanilla success code paths. |
 | QA | System-wide functionality | Usually focused on functionality visible to users and exercised manually. | Focused on vanilla success code paths. |
 
+
 The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
 ## Why Is This Happening?
