@@ -5,7 +5,7 @@ date:       2017-06-19 11:00:00 -0400
 categories: microservice testing edge
 comments:   true
 ---
-*This post originally appeared on Jet.com's blog.*
+**_This post originally appeared on [Jet.com's blog][jet-blog-post]._**
 
 I recently wrote a **[proposal on microservice edge testing][microservice-edge-testing]** to state a blind spot in current testing practices and propose a solution. There has also been some [further exploration of the subject][microservice-edge-ownership]. In the proposal, I dug deep into the problem and attempted to keep things agnostic to any specific implementation or architecture. In this post, I'll focus more on the approach we're experimenting with at Jet.com.
 
@@ -69,3 +69,4 @@ Well, at Jet, we're going to take a stab at building this out and see how it wor
 [microservice-edge-testing]: https://randalldavis.github.io/microservice/testing/2017/06/05/microservice-edges.html
 [microservice-edge-ownership]: https://randalldavis.github.io/microservice/testing/edge/2017/06/08/microservice-edge-ownership.html
 [fake-definition]: https://stackoverflow.com/questions/346372/whats-the-difference-between-faking-mocking-and-stubbing
+[jet-blog-post]: http://tech.jet.com
