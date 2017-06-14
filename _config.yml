@@ -19,7 +19,7 @@ email: randall.davis@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This is just a place to drop some thoughts on software engineering, when the mood strikes.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://randalldavis.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username:
 github_username:  RandallDavis
 disqus:
