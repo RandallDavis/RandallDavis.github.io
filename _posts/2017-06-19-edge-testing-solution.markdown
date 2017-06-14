@@ -42,13 +42,13 @@ Since the fake of the provider microservice will be used in unit testing, it mus
 
 To make sure that the fake stays up to date, the provider microservice needs unit tests to validate it. Basically, we want to test the provider's real behavior and compare it to the fake's behavior. By making it a core part of the provider's code lifecycle, it's going to stay in great shape.
 
-<p align="center"><img src="/_assets/img/EdgeTesting%20-%20providerEdgeUnitTest.png" height="300"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/RandallDavis/RandallDavis.github.io/master/_assets/img/EdgeTesting%20-%20providerEdgeUnitTest.png" height="300"></p>
 
 ## Consumer Edge Testing
 
 In the consumer's unit tests, instead of mocking out interactions with the provider, the fake is used instead. We want to go beyond what we would normally do in consumer unit tests, and really exercise all the "what if" scenarios that might happen when interacting with the provider.
 
-<p align="center"><img src="/_assets/img/EdgeTesting%20-%20consumerUnitTest.png" height="350"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/RandallDavis/RandallDavis.github.io/master/_assets/img/EdgeTesting%20-%20consumerUnitTest.png" height="350"></p>
 
 ## Testing Commands
 
