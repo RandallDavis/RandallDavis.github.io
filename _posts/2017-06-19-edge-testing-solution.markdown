@@ -13,13 +13,7 @@ I recently wrote a **[proposal on microservice edge testing][microservice-edge-t
 
 There are some pretty common practices for testing microservices. These practices are largely used in non-microservice architectures, but microservices introduce some new complexities that push testing needs a little further.
 
-| Testing Type | Coverage | Approach | Caveats |
-| --- | --- | --- | --- |
-| Unit testing | Individual microservice behavior | Should run in pure isolation, run with every build, be quick and parallelized. | Dependencies are mocked out and simplified. |
-| Integration testing | Inter-microservice behavior | Generally focused on finding breaks due to code changes, expensive and complicated to create and run, have real or mocked dependencies depending on sophistication. | Usually geared toward testing vanilla system-wide flows due to complexity of permutations and length of runs. |
-| Load testing | System-wide or individual microservice performance | Less frequent runs, usually leverage live dependencies. | Focused on vanilla success code paths. |
-| QA | System-wide functionality | Usually focused on functionality visible to users and exercised manually. | Focused on vanilla success code paths. |
-
+<p align="center"><img src="/_assets/img/jetBlog/EdgeTesting%20-%20tableAsImageBecauseBlogStylingIsSoHorrid.PNG" width="100%"></p>
 
 The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
