@@ -1,12 +1,10 @@
 ---
 layout:     post
 title:      "Microservice Edge Testing Solution"
-date:       2017-06-19 11:00:00 -0400
+date:       2017-06-14 11:00:00 -0400
 categories: microservice testing edge
 comments:   true
 ---
-**_This post originally appeared on [Jet.com's blog][jet-blog-post]._**
-
 I recently wrote a **[proposal on microservice edge testing][microservice-edge-testing]** to state a blind spot in current testing practices and propose a solution. There has also been some [further exploration of the subject][microservice-edge-ownership]. In the proposal, I dug deep into the problem and attempted to keep things agnostic to any specific implementation or architecture. In this post, I'll focus more on the approach we're experimenting with at Jet.com.
 
 ## Problem
