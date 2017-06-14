@@ -13,7 +13,7 @@ I recently wrote a **[proposal on microservice edge testing][microservice-edge-t
 
 There are some pretty common practices for testing microservices. These practices are largely used in non-microservice architectures, but microservices introduce some new complexities that push testing needs a little further.
 
-<p align="center"><img src="/_assets/img/EdgeTesting%20-%20tableAsImageBecauseBlogStylingIsSoHorrid.PNG" width="100%"></p>
+<p align="center"><img src="{{ site.baseurl }}/_assets/img/EdgeTesting%20-%20tableAsImageBecauseBlogStylingIsSoHorrid.PNG" width="100%"></p>
 
 The problem in this is that **_non-vanilla interactions between microservices are not being adequately tested_**.
 
