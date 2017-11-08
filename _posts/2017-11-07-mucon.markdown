@@ -1,0 +1,13 @@
+---
+layout:     post
+title:      "MuCon Presentation - Microservice Edge Testing"
+date:       2017-11-07 11:00:00 -0400
+categories: mucon microservice testing edge
+comments:   true
+---
+
+<iframe src="https://player.vimeo.com/video/241722050" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<p align="center"><iframe src="https://player.vimeo.com/video/241722050" height="350"></iframe></p>
+
+blah blah
