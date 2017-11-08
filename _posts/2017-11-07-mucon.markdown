@@ -8,6 +8,7 @@ comments:   true
 
 <iframe src="https://player.vimeo.com/video/241722050" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<p align="center"><iframe src="https://player.vimeo.com/video/241722050" height="350"></iframe></p>
+I presented on **Microservice Edge Testing** with [Nikhil Barthwal][nikhil-site] at **[MuCon 2017][mucon-2017]** in London this week. It was a great experience, and I'm honored to have been included!
 
-blah blah
+[mucon-2017]: https://skillsmatter.com/conferences/8549-con-2017-the-microservices-conference
+[nikhil-site]: http://www.nikhilbarthwal.com/
